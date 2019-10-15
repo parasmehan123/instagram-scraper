@@ -790,6 +790,7 @@ class InstagramScraper(object):
         for item in tqdm.tqdm(self.query_media_gen(user), desc='Searching {0} for posts'.format(username),
                               unit=' media', disable=self.quiet):
             # -Filter command line
+            time.sleep(1)
             if self.filter:
                 if 'tags' in item:
                     filtered = any(x in item['tags'] for x in self.filter)
