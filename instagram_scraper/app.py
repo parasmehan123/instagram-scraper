@@ -705,6 +705,8 @@ class InstagramScraper(object):
                             self.merge_json({ 'GraphImages': self.posts }, '{0}/{1}.json'.format(dst, username))
                         else:
                             self.save_json({ 'GraphImages': self.posts }, '{0}/{1}.json'.format(dst, username))
+                except RuntimeError :
+                    continue
                 except ValueError:
                     self.logger.error("Unable to scrape user - %s" % username)
         finally:
@@ -1436,4 +1438,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except RuntimeError
+    
